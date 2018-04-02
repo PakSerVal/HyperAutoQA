@@ -1,8 +1,8 @@
 # HyperAutoQA
 QA-сервис
 ### Используемые фреймворки
-Angular 5 <br>
-Symfony 3.4
+Angular 5 - клиент <br>
+Symfony 3.4 - сервер
 ### Установка
 Склонировать проект
 <pre>git clone https://github.com/PakSerVal/HyperAutoQA.git</pre>
