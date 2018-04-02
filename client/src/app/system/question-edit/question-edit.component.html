@@ -1,0 +1,45 @@
+<div class="question-form-area">
+  <div class="question-form-title">Редактировать вопрос</div>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+      <label class="control-label" for="question-title">Заголовок</label>
+      <input
+        type="text"
+        id="question-title"
+        class="form-control"
+        required
+        #title="ngModel"
+        name="title"
+        [ngModel]="question?.title"
+      >
+      <span
+        *ngIf="title.invalid && title.touched"
+        class="form-help-text"
+      >Заголовок не может быть пустым.</span>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="question-body">Вопрос</label>
+      <p-editor [ngModel]="question?.body" #body="ngModel" required name="body" id="question-body"
+                [style]="{'height':'400px', 'background-color':'#cacbd1'}">
+        <p-header>
+        <span class="ql-formats">
+            <button class="ql-bold" aria-label="Bold"></button>
+            <button class="ql-italic" aria-label="Italic"></button>
+            <button class="ql-underline" aria-label="Underline"></button>
+            <button class="ql-code-block" aria-label="Insert Code Block"></button>
+        </span>
+        </p-header>
+      </p-editor>
+      <span
+        *ngIf="body.invalid && body.touched"
+        class="form-help-text"
+      >Вопрос не может быть пустым.</span>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="f.invalid"
+    >Редактировать
+    </button>
+  </form>
+</div>

@@ -1,0 +1,18 @@
+<header class="header">
+  <div style="float: right"><button class="btn btn-danger" (click)="logout()">выйти</button></div>
+  <div class="container">
+    <h1><a style="text-decoration: none; color: white" routerLink="/system/questions">HyperAutoQA</a></h1>
+    <img src="../../assets/img/question.png" alt="">
+  </div>
+  <div class="user-info">
+    Здравствуй, {{user.username}}!
+  </div>
+  <button class="btn btn-light btn-ask" routerLink="/system/questions/add">Задать вопрос</button>
+</header>
+<div class="main-wrapper">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+

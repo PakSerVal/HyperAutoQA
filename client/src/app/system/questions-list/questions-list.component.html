@@ -1,0 +1,11 @@
+<div class="row question-line">
+  <div class="col-2 text-center" style="font-weight: bold;">Отеветы</div>
+  <div class="col-10" style="font-weight: bold">Вопрос</div>
+</div>
+<app-question-item
+  *ngFor="let question of questions"
+  [question]="question"
+  [myQuestion]="isMyquestion(question.author.id)"
+  (deleteQuestion)="onDelete($event)"
+>
+</app-question-item>

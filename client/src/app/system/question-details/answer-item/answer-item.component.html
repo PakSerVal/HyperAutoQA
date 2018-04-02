@@ -1,0 +1,24 @@
+<div *ngIf="!editMode">
+  <div class="answer-body" [innerHTML]="answer.body | safe: 'html'"></div>
+  <div *ngIf="!myAnswer" class="qa-info text-right">от {{answer.author.username}}</div>
+  <div *ngIf="myAnswer" class="qa-info text-right">
+    <div style="color: red">Это ваш ответ!</div>
+    <button class="btn-dark" (click)="onEdit()">Редактировать</button>
+    <button class="btn-danger" (click)="delete()">Удалить</button>
+  </div>
+</div>
+
+<div *ngIf="editMode">
+  <p-editor [(ngModel)]="answer.body" [style]="{'height':'100px', 'background-color':'#cacbd1'}">
+    <p-header>
+        <span class="ql-formats">
+            <button class="ql-bold" aria-label="Bold"></button>
+            <button class="ql-italic" aria-label="Italic"></button>
+            <button class="ql-underline" aria-label="Underline"></button>
+            <button class="ql-code-block" aria-label="Insert Code Block"></button>
+        </span>
+    </p-header>
+  </p-editor>
+  <button class="btn-success" (click)="update()">Сохранить</button>
+</div>
+

@@ -1,0 +1,30 @@
+<div class="question-area">
+  <div class="question-title">{{question?.title}}</div>
+  <div class="question-body">
+    <p [innerHTML]="question?.body | safe: 'html'"></p>
+  </div>
+  <div class="qa-info text-right" style="color: #ff2700">от {{question?.author.username}}</div>
+  <div class="answers-count">{{answers?.length}} ответов</div>
+</div>
+<div class="answer-area">
+  <div *ngFor="let answer of answers" class="answer-line">
+    <app-answer-item [answer]="answer" [myAnswer]="isMyAnswer(answer.author.id)" (updateAnswer)="onUpdate($event)" (deleteAnswer)="onDelete($event)"></app-answer-item>
+  </div>
+  <div class="answer-add">
+    <h2>Добавьте ваш ответ</h2>
+    <p-editor [(ngModel)]="myAnswer" [style]="{'height':'200px', 'background-color':'#cacbd1'}">
+      <p-header>
+        <span class="ql-formats">
+            <button class="ql-bold" aria-label="Bold"></button>
+            <button class="ql-italic" aria-label="Italic"></button>
+            <button class="ql-underline" aria-label="Underline"></button>
+            <button class="ql-code-block" aria-label="Insert Code Block"></button>
+        </span>
+      </p-header>
+    </p-editor>
+    <button class="btn btn-success" (click)="submitAnswer()" [disabled]="!myAnswer">Сохранить</button>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,17 @@
+<div class="row question-line">
+  <div class="col-2 text-center">{{answers?.length}}</div>
+  <div class="col-10">
+    <a routerLink="/system/questions/details/{{question.id}}">{{question.title}}</a>
+
+    <div class="qa-info text-right">
+      <div *ngIf="!myQuestion">
+        от {{question.author.username}}
+      </div>
+      <div *ngIf="myQuestion">
+        <div style="color: red">Это ваш вопрос!</div>
+        <button class="btn-dark" routerLink="/system/questions/edit/{{question.id}}">Редактировать</button>
+        <button class="btn-danger" (click)="delete(question.id)">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
