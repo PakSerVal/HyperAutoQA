@@ -41,7 +41,7 @@ class UserController extends BaseController
      */
     public function addAction(Request $request)
     {
-        $form       = $this->createForm(UserType::class, new User());
+        $form       = $this->createForm(UserType::class);
         $parameters = $this->processForm($request, $form);
         $result     = $this->getUserManager()->addUser(
             $parameters["email"],

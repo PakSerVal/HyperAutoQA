@@ -5,7 +5,6 @@ namespace AppBundle\EventListener;
 use AppBundle\Api\ApiProblem;
 use AppBundle\Api\ApiProblemException;
 use AppBundle\Api\ResponseFactory;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;

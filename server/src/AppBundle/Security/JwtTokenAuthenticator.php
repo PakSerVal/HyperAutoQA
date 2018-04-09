@@ -6,6 +6,7 @@ use AppBundle\Api\ApiProblem;
 use AppBundle\Api\ResponseFactory;
 use Doctrine\ORM\EntityManager;
 use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
 use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\AuthorizationHeaderTokenExtractor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -46,8 +47,10 @@ class JwtTokenAuthenticator extends AbstractGuardAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        $data = $this->jwtEncoder->decode($credentials);
-        if ($data === false) {
+        try {
+            $data = $this->jwtEncoder->decode($credentials);
+        }
+        catch (JWTDecodeFailureException $e) {
             throw new CustomUserMessageAuthenticationException('Invalid Token');
         }
         $email = $data['email'];

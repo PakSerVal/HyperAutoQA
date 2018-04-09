@@ -57,8 +57,8 @@ class TokenController extends BaseController
         }
         $token = $this->get("lexik_jwt_authentication.encoder")
             ->encode([
-                "email"    => $user->getEmail(),
-                "exp"      => time() + 3600
+                "email" => $user->getEmail(),
+                "exp"   => time() + 3600
             ]);
         return $this->createApiResponse([
             "token"    => $token,

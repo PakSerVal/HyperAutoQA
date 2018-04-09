@@ -32,7 +32,8 @@ class AnswerManager
         return $answer;
     }
 
-    public function updateAnswer($answerId, $answerBody, User $user) {
+    public function updateAnswer($answerId, $answerBody, User $user)
+    {
         $answer = $this->em->getRepository('AppBundle:Answer')->find($answerId);
         if (!$answer) {
             throw new NotFoundHttpException('Answer not found');
